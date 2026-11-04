@@ -1,0 +1,156 @@
+﻿@model Petshop_SAEP.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Entrar";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>PetGestão | Entrar</title>
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <section class="login-brand">
+
+            <div class="brand-icon">
+                ✳
+            </div>
+
+            <span class="eyebrow">GESTÃO INTELIGENTE</span>
+
+            <h1>Pet<span>Gestão.</span></h1>
+
+            <p class="brand-description">
+                Um espaço feito para cuidar de quem
+                faz parte da sua família.
+            </p>
+
+            <div class="brand-decoration">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="brand-footer">
+                Cuidado em cada detalhe.
+            </div>
+
+        </section>
+
+        <section class="login-form-section">
+
+            <div class="login-form-wrapper">
+
+                <div class="form-heading">
+
+                    <span class="eyebrow">
+                        BEM-VINDO DE VOLTA
+                    </span>
+
+                    <h2>Acesse sua conta</h2>
+
+                    <p>
+                        Entre para gerenciar seus pets e agendamentos.
+                    </p>
+
+                </div>
+
+                <form asp-controller="Account"
+                      asp-action="Login"
+                      asp-route-returnUrl="@ViewData["ReturnUrl"]"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="validation-summary">
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="Email">
+                            E-mail
+                        </label>
+
+                        <input asp-for="Email"
+                               class="form-control"
+                               type="email"
+                               placeholder="voce@exemplo.com"
+                               autocomplete="username"
+                               autofocus />
+
+                        <span asp-validation-for="Email"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="Senha">
+                            Senha
+                        </label>
+
+                        <input asp-for="Senha"
+                               class="form-control"
+                               placeholder="Digite sua senha"
+                               autocomplete="current-password" />
+
+                        <span asp-validation-for="Senha"
+                              class="field-error">
+                        </span>
+
+                    </div>
+
+                    <div class="login-options">
+
+                        <label class="remember-option">
+
+                            <input asp-for="LembrarMe" />
+
+                            <span>Manter conectado</span>
+
+                        </label>
+
+                    </div>
+
+                    <button type="submit" class="btn-login">
+
+                        <span>Entrar na plataforma</span>
+
+                        <span class="login-arrow">→</span>
+
+                    </button>
+
+                </form>
+
+                <div class="login-bottom">
+
+                    <span class="status-dot"></span>
+
+                    <span>Área exclusiva para tutores</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
